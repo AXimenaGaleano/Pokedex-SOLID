@@ -1,5 +1,4 @@
-package com.example.pokedex.services;
-
+// Import necessary classes/interfaces for working with databases.
 import com.example.pokedex.models.PokemonDB;
 
 import java.sql.Connection;
@@ -8,44 +7,51 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+// Implementation of PokemonServiceDB for retrieving Pokemon data from a local database.
 public class LocalDatabaseService implements PokemonServiceDB {
 
-    private static final String DATABASE_URL = "jdbc:sqlite:../sujet_TP/ressources/pokemondatabase.sqlite";
+    // URL of the local SQLite database.
+    private static final String DATABASE_URL = "jdbc:sqlite:../sujet_TP/resources/pokemondatabase.sqlite";
 
-
+    // Implementation of the method to get Pokemon data by ID from the local database.
     @Override
     public PokemonDB getPokemonById(int pokemonId) {
+        // SQL query to retrieve Pokemon data based on the provided ID.
         String query = "SELECT * FROM pokemons WHERE id = ?";
 
         try (Connection connection = DriverManager.getConnection(DATABASE_URL);
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
+            // Set the parameter in the prepared statement.
             preparedStatement.setInt(1, pokemonId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            // Check if the result set contains data.
             if (resultSet.next()) {
-                // Procesar el resultado y convertirlo en un objeto Pokemon
+                // Process the result and convert it into a Pokemon object.
                 return parseDatabaseResult(resultSet);
             } else {
-                System.out.println("No se encontró el Pokémon en la base de datos local.");
+                System.out.println("Pokemon not found in the local database.");
             }
 
         } catch (SQLException e) {
-            System.out.println("Error al obtener datos del Pokémon desde la base de datos local: " + e.getMessage());
+            // Handle SQLException and print an error message.
+            System.out.println("Error fetching Pokemon data from the local database: " + e.getMessage());
         }
 
         return null;
     }
 
+    // Private method to parse the database result and create a PokemonDB object.
     private PokemonDB parseDatabaseResult(ResultSet resultSet) throws SQLException {
-        // Extraer datos de las columnas del resultado
-        int id = resultSet.getInt("id");
-        String nombre = resultSet.getString("name");
+        // Extract data from the result set columns.
+        Long id = resultSet.getLong("id");
+        String name = resultSet.getString("name");
         String description = resultSet.getString("description");
-        double altura = resultSet.getDouble("height");
-        double peso = resultSet.getDouble("weight");
+        double height = resultSet.getDouble("height");
+        double weight = resultSet.getDouble("weight");
 
-        // Crear y retornar un objeto Pokemon con los datos extraídos
-        return new PokemonDB(nombre, description, altura, peso);
+        // Create and return a PokemonDB object with the extracted data.
+        return new PokemonDB(id, name, description, height, weight);
     }
 }

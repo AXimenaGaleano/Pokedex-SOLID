@@ -1,6 +1,6 @@
 # Pokedex-SOLID
 
-Imp
+Implementation of SOLID principles
 
 ---
 
