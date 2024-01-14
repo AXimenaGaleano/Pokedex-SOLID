@@ -1,3 +1,4 @@
+package com.example.pokedex.services;
 // Import necessary classes/interfaces for HTTP operations, JSON handling, and the Pokemon model.
 import com.example.pokedex.models.Pokemon;
 import com.google.gson.Gson;
@@ -22,7 +23,6 @@ public class ApiService implements PokemonService {
         try {
             // Make an API request and obtain the JSON response.
             String apiResponse = makeApiRequest(apiUrl);
-
             // Deserialize the JSON response into a Pokemon object using Gson.
             Gson gson = new Gson();
             Pokemon pokemon = gson.fromJson(apiResponse, Pokemon.class);

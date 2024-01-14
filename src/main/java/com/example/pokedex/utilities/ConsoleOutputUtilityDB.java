@@ -1,12 +1,11 @@
+package com.example.pokedex.utilities;
 // Import the necessary classes/interfaces from the 'com.example.pokedex.models' package.
 import com.example.pokedex.models.PokemonDB;
-
 // Define a utility class named ConsoleOutputUtilityDB for generating different output formats for PokemonDB data.
 public class ConsoleOutputUtilityDB {
     // Fields to store the desired output format and a generator for multiple formats specific to PokemonDB.
     private OutputFormat outputFormat;
     private MultipleFormatGeneratorDB formatsGenerator;
-
     // Constructor for ConsoleOutputUtilityDB, taking an output format and a format generator as parameters.
     public ConsoleOutputUtilityDB(OutputFormat outputFormat, MultipleFormatGeneratorDB formatsGenerator) {
         this.outputFormat = outputFormat;

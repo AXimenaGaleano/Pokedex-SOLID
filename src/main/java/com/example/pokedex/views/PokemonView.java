@@ -1,8 +1,9 @@
 // Import necessary classes/interfaces from 'com.example.pokedex.models' and 'com.example.pokedex.utilities' packages.
+package com.example.pokedex.views;
+// Define a view class named PokemonView implementing the MultipleFormatGenerator interface.
 import com.example.pokedex.models.Pokemon;
 import com.example.pokedex.utilities.MultipleFormatGenerator;
 
-// Define a view class named PokemonView implementing the MultipleFormatGenerator interface.
 public class PokemonView implements MultipleFormatGenerator {
 
     // Method to generate human-readable text representation of a Pokemon.
@@ -11,13 +12,12 @@ public class PokemonView implements MultipleFormatGenerator {
         StringBuilder textRepresentation = new StringBuilder();
         textRepresentation.append("=============================\n");
         textRepresentation.append("Pokémon # ").append(String.valueOf(pokemon.getId())).append("\n");
-        textRepresentation.append("Name: ").append(capitalizeFirstLetter(pokemon.getName())).append("\n");
-        textRepresentation.append("Height: ").append(pokemon.getHeight()).append(" m\n");
-        textRepresentation.append("Weight: ").append(pokemon.getWeight()).append(" kg\n");
+        textRepresentation.append("Nom : ").append(capitalizeFirstLetter(pokemon.getName())).append("\n");
+        textRepresentation.append("Taille : ").append(pokemon.getHeight()).append(" m\n");
+        textRepresentation.append("Poids : ").append(pokemon.getWeight()).append(" kg\n");
         textRepresentation.append("=============================");
         return textRepresentation.toString();
     }
-
     // Private method to capitalize the first letter of a string.
     private String capitalizeFirstLetter(String input) {
         if (input == null || input.isEmpty()) {
@@ -33,8 +33,8 @@ public class PokemonView implements MultipleFormatGenerator {
         htmlRepresentation.append("<h1>").append(pokemon.getName()).append("</h1>\n");
         htmlRepresentation.append("<ul>\n");
         htmlRepresentation.append("<li>Id : ").append(pokemon.getId()).append("</li>\n");
-        htmlRepresentation.append("<li>Height : ").append(pokemon.getHeight()).append("</li>\n");
-        htmlRepresentation.append("<li>Weight : ").append(pokemon.getWeight()).append("</li>\n");
+        htmlRepresentation.append("<li>Taille : ").append(pokemon.getHeight()).append("</li>\n");
+        htmlRepresentation.append("<li>Poids : ").append(pokemon.getWeight()).append("</li>\n");
         htmlRepresentation.append("</ul>\n");
         return htmlRepresentation.toString();
     }

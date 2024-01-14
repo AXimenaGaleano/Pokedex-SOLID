@@ -1,6 +1,6 @@
+package com.example.pokedex.utilities;
 // Import the necessary classes/interfaces from the 'com.example.pokedex.models' package.
 import com.example.pokedex.models.Pokemon;
-
 // Define a utility class named ConsoleOutputUtility for generating different output formats for Pokemon data.
 public class ConsoleOutputUtility {
     // Fields to store the desired output format and a generator for multiple formats.

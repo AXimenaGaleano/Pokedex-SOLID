@@ -1,3 +1,5 @@
+package com.example.pokedex.models;
+
 // Import necessary annotations and classes from the 'javax.persistence' package.
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ public class Pokemon {
     // Annotate the 'id' field as the primary key, automatically generated using an identity strategy.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;  // Unique identifier in the database
+    private Long id;  // Identificador único en la base de datos
 
     // Declare fields for the name, height, and weight of the Pokemon.
     private String name;
@@ -64,5 +66,5 @@ public class Pokemon {
     public void setWeight(double weight) {
         this.weight = weight;
     }
-}
 
+}
